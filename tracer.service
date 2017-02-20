@@ -1,0 +1,14 @@
+[Unit]
+Description=Tracer Data Sender
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/pi/tracer_data_sender/send_tracer_data.py /home/pi/tracer_data_sender/emon_cms_write.key
+Restart=always
+RestartSec=1
+StandardError=syslog+console
+
+[Install]
+WantedBy=multi-user.target
